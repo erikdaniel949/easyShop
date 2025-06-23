@@ -1,0 +1,81 @@
+:root {
+  --color-oscuro: #008078;
+  --color-claro: #00B1AC;
+  --color-fondo: #222929;
+  --color-blanco: #fff;
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-blanco);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.form-container {
+  background: var(--color-oscuro);
+  padding: 30px 40px;
+  border-radius: 10px;
+  width: 320px;
+  box-shadow: 0 0 15px rgba(0, 177, 172, 0.5);
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 25px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 16px 0;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+  transition: box-shadow 0.3s ease;
+}
+
+input:focus {
+  box-shadow: 0 0 5px 2px var(--color-claro);
+}
+
+button {
+  background-color: var(--color-claro);
+  border: none;
+  color: var(--color-fondo);
+  padding: 12px;
+  width: 100%;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #00A39A;
+  transform: scale(1.05);
+}
+
+.links {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.links a {
+  color: var(--color-claro);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+.links a:hover {
+  text-decoration: underline;
+  color: #00E0D9;
+}
