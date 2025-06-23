@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const data = { name, email, password };
 
     try {
-      const response = await fetch("/register", {
+      const response = await fetch("https://node-production-d05b.up.railway.app/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
