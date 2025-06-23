@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Easy Shop - Registrarse</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="form-container">
+    <h2>Registrarse - Easy Shop</h2>
+    <form action="/register" method="POST" id="registerForm">
+      <input type="text" name="name" placeholder="Nombre completo" required />
+      <input type="email" name="email" placeholder="Correo electrónico" required />
+      <input type="password" name="password" placeholder="Contraseña" required />
+      <input type="password" name="confirm_password" placeholder="Confirmar contraseña" required />
+      <button type="submit">Crear cuenta</button>
+    </form>
+    <div class="links">
+      <a href="login.html">Volver al login</a>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
