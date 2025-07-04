@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const showDatabase = async () => {
   try {
-    const response = await fetch("http://localhost:3000/showDatabase");
+    const response = await fetch("https://node-production-d05b.up.railway.app/showDatabase");
     if (response.ok) {
       const data = await response.json();
       const fragment = document.createDocumentFragment();
