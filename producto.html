@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detalle del Producto - Easy Shop</title>
+  <link rel="stylesheet" href="Pag.css" />
+</head>
+<body class="login-body">
+
+  <div class="producto-detalle-container">
+    <h1 id="prod-nombre">Cargando...</h1>
+    <img id="prod-img" src="" alt="Producto" />
+    <h2 id="prod-precio"></h2>
+    <p id="prod-desc"></p>
+    <a href="index.html" class="btn-comprar">Volver a la tienda</a>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById("prod-nombre").textContent = params.get("nombre");
+    document.getElementById("prod-precio").textContent = "Precio: $" + params.get("precio");
+    document.getElementById("prod-desc").textContent = decodeURIComponent(params.get("desc"));
+    document.getElementById("prod-img").src = params.get("img");
+  </script>
+</body>
+</html>
