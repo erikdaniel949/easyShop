@@ -1,0 +1,17 @@
+.producto-detalle-container {
+  background-color: #fff;
+  color: #000;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.producto-detalle-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 20px 0;
+}
