@@ -75,8 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "index.html";
       } else {
         // Leer el mensaje de error del backend
-        const error = await response.json();
-        alert("Error al iniciar sesión: " + (error.error || "Intente nuevamente."));
+        const result = await response.json();
+        alert("Error al iniciar sesión: " + (result.error || "Intente nuevamente."));
       }
     } catch (err) {
       console.error("Error al enviar la solicitud:", err);
@@ -84,3 +84,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+
+const showDatabase = async () => {
+  try {
+    const response = await fetch("http://localhost:3000/showDatabase");
+    if (response.ok) {
+      const data = await response.json();
+      const fragment = document.createDocumentFragment();
+      // Buscar el tbody de la tabla por id o selector correcto
+      const tableBody = document.querySelector(".table-body");
+      tableBody.innerHTML = ""; // Limpiar la tabla antes de agregar nuevos datos
+      data.forEach(item => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${item.id}</td>
+          <td>${item.name}</td>
+          <td>${item.email}</td>
+          <td>${item.password}</td>
+        `;
+        fragment.appendChild(row);
+      });
+      tableBody.appendChild(fragment);
+    } else {
+      console.error("Error al obtener los datos de la base de datos.");
+    }
+  } catch (error) {
+    console.error("Error al conectar con el servidor:", error);
+  }
+}
+
+// Ejecutar showDatabase automáticamente si existe el div de la base de datos
+if (document.getElementById("databaseContent")) {
+  showDatabase();
+}
