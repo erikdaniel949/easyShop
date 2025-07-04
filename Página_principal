@@ -30,8 +30,7 @@
       <img src="https://via.placeholder.com/200x150" alt="Producto 1">
       <h3>Producto 1</h3>
       <p>$1200</p>
-      <button class="btn-comprar" onclick="mostrarDetalle('Producto 1', '$1200', 'Un producto excelente de alta calidad.')">Ver producto</button>
-    </div>
+      <a class="info-btn" href="producto.html?nombre=Laptop&precio=2400&desc=Laptop%20Gamer%20con%20RTX%201050%20y%2016GB%20RAM&img=https://via.placeholder.com/200x150">Ver producto</a>
     <div class="producto">
       <img src="https://via.placeholder.com/200x150" alt="Producto 2">
       <h3>Producto 2</h3>
