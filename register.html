@@ -1,25 +1,46 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Easy Shop - Registrarse</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="form-common.css" />
+  <link rel="stylesheet" href="register.css" />
 </head>
+
 <body>
   <div class="form-container">
-    <h2>Registrarse - Easy Shop</h2>
-    <form action="/register" method="POST" id="registerForm">
-      <input type="text" name="name" placeholder="Nombre completo" required />
-      <input type="email" name="email" placeholder="Correo electrónico" required />
-      <input type="password" name="password" placeholder="Contraseña" required />
-      <input type="password" name="confirm_password" placeholder="Confirmar contraseña" required />
-      <button type="submit">Crear cuenta</button>
+    <h2>Crear cuenta</h2>
+
+    <form id="registerForm">
+      <input id="name" name="name" type="text" placeholder="Nombre completo" />
+      <input id="email" name="email" type="email" placeholder="Correo electrónico" />
+      <input id="passwordInput" name="password" type="password" placeholder="Contraseña" />
+
+      <div class="password-rules">
+        <p id="passwordLength">Debe tener al menos 8 caracteres</p>
+        <p id="passwordMayus">Debe contener una mayúscula</p>
+        <p id="passwordNums">Debe contener un número</p>
+        <p id="passwordSymbol">Debe contener un símbolo</p>
+      </div>
+
+      <input id="passwordConfirmInput" name="confirm_password" type="password" placeholder="Confirmar contraseña" />
+
+      <div class="confirm-password-warning">
+        <p>Las contraseñas no coinciden</p>
+      </div>
+
+      <button id="registerBtn" type="submit">Registrarse</button>
     </form>
+
     <div class="links">
-      <a href="login.html">Volver al login</a>
+      <a href="login.html">Ya tengo cuenta</a>
+      <a href="forgot.html">Olvidé mi contraseña</a>
     </div>
   </div>
-  <script src="script.js"></script>
+
+  <script src="register.js"></script>
 </body>
+
 </html>
