@@ -1,6 +1,6 @@
 // funcion para verificar si el usuario está logueado
     const checkSession = async () => {
-      const response = await fetch('http://localhost:3000/isLogged', {
+      const response = await fetch('https://back-es-yjar.onrender.com/isLogged', {
         method: 'GET',
         credentials: 'include' // Asegura que se envíen las cookies
       })
