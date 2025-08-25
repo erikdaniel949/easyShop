@@ -18,9 +18,7 @@ form.addEventListener("submit", async (e) => {
     });
     if (response.ok) {
       const result = await response.json();
-      alert("Inicio de sesión exitoso. Redirigiendo al usuario a la página principal.");
-      //window.location.href = "index.html";
-      alert("Bienvenido " + result);
+      window.location.href = "index.html";
     } else {
       // Leer el mensaje de error del backend
       const result = await response.json();
