@@ -1,6 +1,9 @@
 const showDatabase = async () => {
   try {
-    const response = await fetch("https://backend-production-4cbf.up.railway.app/showDatabase");
+    const response = await fetch("https://back-es-yjar.onrender.com/showDatabase", {
+      method: "GET",
+      credentials: "include" // Esto envía las cookies
+    });
     if (response.ok) {
       const data = await response.json();
       const fragment = document.createDocumentFragment();
