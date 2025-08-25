@@ -8,17 +8,19 @@ form.addEventListener("submit", async (e) => {
   const data = { email, password };
 
   try {
-    const response = await fetch("https://backend-production-4cbf.up.railway.app/login", {
+    const response = await fetch("http://localhost:3000/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
+      credentials: "include" // Incluir cookies en la solicitud
     });
     if (response.ok) {
       const result = await response.json();
       alert("Inicio de sesión exitoso. Redirigiendo al usuario a la página principal.");
-      window.location.href = "index.html";
+      //window.location.href = "index.html";
+      alert("Bienvenido " + result);
     } else {
       // Leer el mensaje de error del backend
       const result = await response.json();
