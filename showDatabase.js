@@ -17,6 +17,8 @@ const showDatabase = async () => {
           <td>${item.name}</td>
           <td>${item.email}</td>
           <td>${item.password}</td>
+          <td>${item.money}</td>
+          <td>${item.role}</td>
         `;
         fragment.appendChild(row);
       });
