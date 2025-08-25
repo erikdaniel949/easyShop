@@ -101,7 +101,7 @@
             const product = { name, description, stock, price, image_url };
 
             try {
-                const response = await fetch('http://localhost:3000/createProduct', {
+                const response = await fetch('https://back-es-yjar.onrender.com/createProduct', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(product),
