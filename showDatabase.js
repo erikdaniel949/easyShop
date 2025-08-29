@@ -31,7 +31,7 @@ async function fetchUsers() {
 
                 // opcional: mostrar en la tabla un mensaje de error
                 const tbody = document.querySelector('#usersTable tbody');
-                tbody.innerHTML = `<tr><td colspan="4">❌ No se pudieron cargar los usuarios</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="6">❌ No se pudieron cargar los usuarios</td></tr>`;
             }
         }
 
