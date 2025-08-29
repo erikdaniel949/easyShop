@@ -48,7 +48,7 @@ form.addEventListener("submit", async (e) => {
 
   // Intentar hacer la consulta de registro a la api
   try {
-    const response = await fetch("https://backend-production-4cbf.up.railway.app/register", {
+    const response = await fetch("https://back-es-yjar.onrender.com/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
