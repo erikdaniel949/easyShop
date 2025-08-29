@@ -1,31 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+<!DOCTYPE html>
+<html lang="es">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Database</title>
-  <link rel="stylesheet" href="showDatabase.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base de datos</title>
+    <link rel="stylesheet" src="showDatabase.css">
 </head>
+
 <body>
-  <h1>Database</h1>
-  <div id="databaseContent">
-    <table>
-      <thead>
-        <tr>
-          <th>id</th>
-          <th>name</th>
-          <th>email</th>
-          <th>password</th>
-          <th>money</th>
-          <th>role</th>
-        </tr>
-      </thead>
-      <tbody class="table-body">
-        <!-- Aquí se llenarán los datos dinámicamente -->
-      </tbody>
-    </table>
-  </div>
-  <script src="showDatabase.js"></script>
-  <script>showDatabase()</script>
+    <h1>Base de datos</h1>
+    <div class="container">
+        <h2>Usuarios</h2>
+        <table id="usersTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Contraseña</th>
+                    <th>Dinero</th>
+                    <th>Rol</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <h2>Productos</h2>
+        <table id="productsTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Stock</th>
+                    <th>Precio</th>
+                    <th>URL Imagen</th>
+                    <th>Creado el</th>
+                    <th>Última actualización</th>
+                    <th>ID Publicante</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <h2>Compras</h2>
+        <table id="purchasesTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ID Usuario</th>
+                    <th>ID Producto</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                    <th>Fecha de creación</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <script src="showDatabase.js"></script>
+    <script>
+        fetchUsers();
+        fetchProducts();
+        fetchPurchases();
+    </script>
 </body>
+
 </html>
