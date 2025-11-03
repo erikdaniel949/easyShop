@@ -1,8 +1,8 @@
 :root {
-  --color-oscuro: #008078;
-  --color-claro: #00B1AC;
-  --color-fondo: #222929;
-  --color-blanco: #fff;
+  --color-oscuro: #000000; /* Negro */
+  --color-claro: #FFD700;  /* Dorado */
+  --color-fondo: #121212;  /* Fondo negro suave */
+  --color-blanco: #ffffff; /* Blanco */
 }
 
 body {
@@ -21,12 +21,13 @@ body {
   padding: 30px 40px;
   border-radius: 10px;
   width: 320px;
-  box-shadow: 0 0 15px rgba(0, 177, 172, 0.5);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
   text-align: center;
 }
 
 h2 {
   margin-bottom: 25px;
+  color: var(--color-claro);
 }
 
 input[type="text"],
@@ -49,7 +50,7 @@ input:focus {
 button {
   background-color: var(--color-claro);
   border: none;
-  color: var(--color-fondo);
+  color: var(--color-oscuro);
   padding: 12px;
   width: 100%;
   border-radius: 6px;
@@ -59,7 +60,7 @@ button {
 }
 
 button:hover {
-  background-color: #00A39A;
+  background-color: #e6c200;
   transform: scale(1.05);
 }
 
@@ -77,7 +78,7 @@ button:hover {
 
 .links a:hover {
   text-decoration: underline;
-  color: #00E0D9;
+  color: #fffacd; /* tono dorado más claro */
 }
 
 .form-container form>* {
