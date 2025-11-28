@@ -125,7 +125,7 @@
 
             try {
                 const res = await fetch(`${API_URL}/increaseBalance`, {
-                    method: "POST",
+                    method: "PATCH",
                     credentials: "include", // ENVÍA LAS COOKIES
                     headers: {
                         "Content-Type": "application/json"

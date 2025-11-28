@@ -57,8 +57,7 @@ async function fetchUsers() {
                         <td>${product.stock}</td>
                         <td>${product.price}</td>
                         <td>${product.image_url}</td>
-                        <td>${product.created_at}</td>
-                        <td>${product.updated_at}</td>
+
                         <td>${product.publisher_id}</td>
                     `;
                     tbody.appendChild(tr);
