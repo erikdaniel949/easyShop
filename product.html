@@ -32,47 +32,48 @@
     async function loadProduct() {
         const params = new URLSearchParams(window.location.search);
         const id = params.get("id");
-    
+
         if (!id) {
             document.getElementById("title").textContent = "ID inválido";
             return;
         }
-    
+
         try {
             const res = await fetch(`https://back-es-yjar.onrender.com/getProductById/${id}`, {
                 credentials: "include"
             });
-    
+
             const data = await res.json();
-    
+
+            if (!res.ok) {
+                document.getElementById("title").textContent = data.message || "Error";
+                return;
+            }
+
             document.getElementById("title").textContent = data.title;
             document.getElementById("image").src = data.image_url;
             document.getElementById("description").textContent = data.description;
             document.getElementById("price").textContent = "Precio: $" + data.price;
-    
-            // manejar compra
+
+            // comprar
             document.getElementById("buyBtn").onclick = async () => {
                 const buyRes = await fetch(`https://back-es-yjar.onrender.com/purchase`, {
                     method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body:JSON.stringify({
-                      productId: id
-                    ),
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ productId: id }),
                     credentials: "include"
                 });
-    
+
                 const result = await buyRes.json();
                 alert(result.message);
             };
-    
+
         } catch (err) {
             console.error(err);
             document.getElementById("title").textContent = "Error al cargar";
         }
     }
-    
+
     loadProduct();
   </script>
 
