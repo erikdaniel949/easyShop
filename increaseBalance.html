@@ -95,7 +95,7 @@
         // --- Obtener balance al cargar la página ---
         async function loadBalance() {
             try {
-                const res = await fetch(`https://back-es-yjar.onrender.com/getBalance`, {
+                const res = await fetch('https://back-es-yjar.onrender.com/getBalance', {
                     method: "GET",
                     credentials: "include" // ENVÍA LAS COOKIES AUTOMÁTICAMENTE
                 });
@@ -124,7 +124,7 @@
             const amount = Number(document.getElementById("amount").value);
 
             try {
-                const res = await fetch(`${API_URL}/increaseBalance`, {
+                const res = await fetch('https://back-es-yjar.onrender.com/increaseBalance', {
                     method: "PATCH",
                     credentials: "include", // ENVÍA LAS COOKIES
                     headers: {
