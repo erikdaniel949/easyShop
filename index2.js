@@ -75,11 +75,14 @@ async function fetchAndRenderProducts() {
       btnDetalle.className = 'btn-comprar';
       btnDetalle.textContent = 'Ver detalle';
       btnDetalle.addEventListener('click', () => {
+        /*
         mostrarDetalle(
           product.name || '',
           product.price ?? product.precio ?? '',
           product.description || product.desc || ''
         );
+        */
+        window.location.href = `product.html?id=${product.id}`;
       });
 
       // Botón agregar al carrito
@@ -107,10 +110,30 @@ async function fetchAndRenderProducts() {
   }
 }
 
+async function loadBalance() {
+    try {
+        const res = await fetch("https://back-es-yjar.onrender.com/getBalance", {
+            method: "GET",
+            credentials: "include"
+        });
+
+        if (!res.ok) {
+            document.getElementById("balanceBox").textContent = "Balance: Error";
+            return;
+        }
+
+        const data = await res.json();
+        document.getElementById("balanceBox").textContent = "Balance: $" + data.balance;
+    } catch (err) {
+        document.getElementById("balanceBox").textContent = "Balance: Error";
+    }
+}
+
 // -----------------------------
 // Ejecutar todo al cargar la página
 // -----------------------------
 window.addEventListener('DOMContentLoaded', () => {
   checkSession();
   fetchAndRenderProducts();
+  loadBalance();
 });

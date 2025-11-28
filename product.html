@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Producto</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .card {
+      max-width: 400px;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2 id="title">Cargando...</h2>
+    <img id="image" src="" alt="Producto"/>
+    <p id="description"></p>
+    <p id="price"></p>
+
+    <button id="buyBtn">Comprar</button>
+  </div>
+
+  <script>
+    async function loadProduct() {
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get("id");
+    
+        if (!id) {
+            document.getElementById("title").textContent = "ID inválido";
+            return;
+        }
+    
+        try {
+            const res = await fetch(`https://back-es-yjar.onrender.com/getProductById/${id}`, {
+                credentials: "include"
+            });
+    
+            const data = await res.json();
+    
+            document.getElementById("title").textContent = data.title;
+            document.getElementById("image").src = data.image_url;
+            document.getElementById("description").textContent = data.description;
+            document.getElementById("price").textContent = "Precio: $" + data.price;
+    
+            // manejar compra
+            document.getElementById("buyBtn").onclick = async () => {
+                const buyRes = await fetch(`https://back-es-yjar.onrender.com/purchase`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body:JSON.stringify({
+                      productId: id
+                    ),
+                    credentials: "include"
+                });
+    
+                const result = await buyRes.json();
+                alert(result.message);
+            };
+    
+        } catch (err) {
+            console.error(err);
+            document.getElementById("title").textContent = "Error al cargar";
+        }
+    }
+    
+    loadProduct();
+  </script>
+
+</body>
+</html>

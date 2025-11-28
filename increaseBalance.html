@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aumentar Balance</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 24px 32px 32px 32px;
+            border-radius: 12px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+            margin-top: 12px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .balance-box {
+            background: #e9f1ff;
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border: 1px solid #c9d9ff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Aumentar Balance</h2>
+
+        <!-- BALANCE ACTUAL -->
+        <div class="balance-box" id="balanceDisplay">Cargando balance...</div>
+
+        <!-- FORMULARIO -->
+        <form id="balanceForm">
+            <label for="amount">Cantidad a agregar:</label>
+            <input type="number" id="amount" name="amount" required min="1">
+
+            <button type="submit">Aumentar Balance</button>
+        </form>
+
+        <p id="msg" style="margin-top: 15px; text-align:center;"></p>
+    </div>
+
+    <script>
+        // --- Obtener balance al cargar la página ---
+        async function loadBalance() {
+            try {
+                const res = await fetch(`https://back-es-yjar.onrender.com/getBalance`, {
+                    method: "GET",
+                    credentials: "include" // ENVÍA LAS COOKIES AUTOMÁTICAMENTE
+                });
+
+                const data = await res.json();
+
+                if (!res.ok) {
+                    document.getElementById("balanceDisplay").innerText = "Error obteniendo balance";
+                } else {
+                    document.getElementById("balanceDisplay").innerText =
+                        `Balance actual: $${data.balance}`;
+                }
+
+            } catch (err) {
+                document.getElementById("balanceDisplay").innerText = "Error de conexión";
+            }
+        }
+
+        loadBalance(); // Ejecutar al inicio
+
+
+        // --- Envío del formulario para aumentar balance ---
+        document.getElementById("balanceForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const amount = Number(document.getElementById("amount").value);
+
+            try {
+                const res = await fetch(`${API_URL}/increaseBalance`, {
+                    method: "POST",
+                    credentials: "include", // ENVÍA LAS COOKIES
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ amount })
+                });
+
+                const data = await res.json();
+
+                const msg = document.getElementById("msg");
+
+                if (res.ok) {
+                    msg.style.color = "green";
+                    msg.innerText = "Balance actualizado correctamente.";
+                    loadBalance(); // refrescar balance
+                } else {
+                    msg.style.color = "red";
+                    msg.innerText = data.message || "Error al actualizar balance.";
+                }
+
+            } catch (err) {
+                document.getElementById("msg").innerText = "Error de conexión.";
+            }
+        });
+    </script>
+
+</body>
+
+</html>
