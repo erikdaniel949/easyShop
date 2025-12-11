@@ -117,6 +117,9 @@
                     document.getElementById('message').textContent = 'Producto creado exitosamente.';
                     console.log(data.message);
                     console.log(data.product);
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1000); // 1 segundo de espera
                 }
 
             } catch (err) {

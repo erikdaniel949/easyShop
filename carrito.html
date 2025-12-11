@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Easy Shop - Carrito</title>
+  <link rel="stylesheet" href="carrito.css" />
+</head>
+<body>
+
+<header>
+  <h1>Easy Shop</h1>
+  <p>Tu carrito de compras</p>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="createProduct.html">Publicar</a>
+    <a href="contact.html">Contacto</a>
+    <a href="login.html">Iniciar sesión</a>
+  </nav>
+</header>
+
+<main>
+  <section id="carrito-container">
+    <h2>Productos en tu carrito</h2>
+    <div id="carrito-productos"></div>
+    <p id="carrito-vacio">Tu carrito está vacío 😢</p>
+    <div id="carrito-total">
+      Total: $<span id="total">0</span>
+    </div>
+    <button id="vaciar-carrito">Vaciar carrito</button>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Easy Shop. Todos los derechos reservados.</p>
+</footer>
+
+<script src="carrito.js"></script>
+</body>
+</html>
