@@ -7,8 +7,8 @@
       if(response.ok) {
         const data = await response.json();
         const sessionBtn = document.getElementById('sessionBtn');
-        sessionBtn.textContent = 'Mi cuenta';
-        sessionBtn.href = 'profile.html';
+        sessionBtn.textContent = 'Mis productos';
+        sessionBtn.href = 'myProducts.html';
         
         
       } else {

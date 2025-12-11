@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mis Productos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #0f0f0f;
+      color: #f5f5f5;
+    }
+
+    header {
+      background-color: #FFD700;
+      color: #000;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #000;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px;
+    }
+
+    nav a {
+      color: #FFD700;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    .hero {
+      background-color: #1a1a1a;
+      text-align: center;
+      padding: 40px 20px;
+      color: #FFD700;
+    }
+
+    .productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 30px;
+    }
+
+    .producto {
+      background-color: #1b1b1b;
+      border: 2px solid #FFD700;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+    }
+
+    .producto img {
+      width: 100%;
+      max-height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .btn-comprar {
+      margin-top: 10px;
+      background-color: #FFD700;
+      color: #000;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn-comprar:hover {
+      background-color: #000;
+      color: #FFD700;
+      border: 2px solid #FFD700;
+    }
+
+    footer {
+      background-color: #000;
+      color: #FFD700;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Mis Productos Comprados</h1>
+  </header>
+
+  <nav>
+    <a href="#">Inicio</a>
+    <a href="#">Productos</a>
+    <a href="#">Cuenta</a>
+  </nav>
+
+  <section class="hero">
+    <h2>Tu catálogo personal</h2>
+    <p>Estos son los productos que adquiriste.</p>
+  </section>
+
+  <section class="productos" id="productos-container">
+    <!-- Aquí se insertarán los productos con JS -->
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Easy Shop. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    async function cargarProductos() {
+      try {
+        const res = await fetch("https://back-es-yjar.onrender.com/getMyProducts", {
+          method: "GET",
+          credentials: "include", // <<--- ENVÍA COOKIES / JWT HTTPONLY
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+
+        if (!res.ok) {
+          console.error("Error:", res.status);
+          return;
+        }
+
+        const productos = await res.json();
+        const contenedor = document.getElementById("productos-container");
+
+        if (!productos || productos.length === 0) {
+          contenedor.innerHTML = "<p>No tienes productos aún.</p>";
+          return;
+        }
+
+        productos.forEach(p => {
+          const card = document.createElement("div");
+          card.classList.add("producto");
+
+          card.innerHTML = `
+            <img src="${p.image_url}" alt="${p.name}">
+            <h3>${p.name}</h3>
+            <p>${p.description}</p>
+            <p><strong>$${p.price}</strong></p>
+          `;
+
+          contenedor.appendChild(card);
+        });
+
+      } catch (err) {
+        console.error("Error cargando productos:", err);
+      }
+    }
+
+    cargarProductos();
+  </script>
+
+</body>
+</html>
