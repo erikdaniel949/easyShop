@@ -57,31 +57,34 @@
 
             // comprar
             document.getElementById("buyBtn").onclick = async () => {
-            const btn = document.getElementById("buyBtn");
+                const btn = document.getElementById("buyBtn");
                 btn.disabled = true;
                 btn.textContent = "Procesando...";
 
-            try {
-                const buyRes = await fetch(`https://back-es-yjar.onrender.com/purchase`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ productId: id }),
-                    credentials: "include"
-                });
+                try {
+                    const buyRes = await fetch(`https://back-es-yjar.onrender.com/purchase`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ productId: id }),
+                        credentials: "include"
+                    });
 
-                const result = await buyRes.json();
-                alert(result.message);
-            } catch (err) {
-                console.error(err);
-                alert("Error en la compra");
-            } finally {
-                btn.disabled = false;
-                btn.textContent = "Comprar";
-            }
-        } catch (err) {
+                   const result = await buyRes.json();
+                   alert(result.message);
+                } catch (err) {
+                    console.error(err);
+                    alert("Error en la compra");
+                } finally {
+                    btn.disabled = false;
+                    btn.textContent = "Comprar";
+                }
+            }; // ← ✔ cierre correcto del onclick
+
+          } catch (err) { // este catch pertenece al loadProduct()
             console.error(err);
             document.getElementById("title").textContent = "Error al cargar";
         }
+
     }
 
     loadProduct();
