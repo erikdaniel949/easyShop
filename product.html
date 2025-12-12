@@ -4,16 +4,51 @@
   <meta charset="UTF-8" />
   <title>Producto</title>
   <style>
-    body { font-family: Arial; padding: 20px; }
-    .card {
-      max-width: 400px;
-      border: 1px solid #ddd;
-      padding: 20px;
-      border-radius: 10px;
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #000; /* Negro */
+      color: #fff; /* Blanco */
+      display: flex;
+      justify-content: center; /* Centrar horizontal */
+      align-items: center; /* Centrar vertical */
+      height: 100vh;
     }
+
+    .card {
+      width: 90%;
+      max-width: 400px;
+      background: #111; 
+      border: 2px solid #ffdd00; /* Amarillo */
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0px 0px 15px rgba(255, 221, 0, 0.4);
+      text-align: center;
+    }
+
     img {
       width: 100%;
       border-radius: 10px;
+      border: 1px solid #ffdd00;
+    }
+
+    #buyBtn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      background: #ffdd00; /* Amarillo */
+      color: #000;
+      font-weight: bold;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    #buyBtn:hover {
+      background: #ffe733;
     }
   </style>
 </head>
@@ -69,8 +104,8 @@
                         credentials: "include"
                     });
 
-                   const result = await buyRes.json();
-                   alert(result.message);
+                    const result = await buyRes.json();
+                    alert(result.message);
                 } catch (err) {
                     console.error(err);
                     alert("Error en la compra");
@@ -78,13 +113,12 @@
                     btn.disabled = false;
                     btn.textContent = "Comprar";
                 }
-            }; // ← ✔ cierre correcto del onclick
+            };
 
-          } catch (err) { // este catch pertenece al loadProduct()
+        } catch (err) {
             console.error(err);
             document.getElementById("title").textContent = "Error al cargar";
         }
-
     }
 
     loadProduct();
